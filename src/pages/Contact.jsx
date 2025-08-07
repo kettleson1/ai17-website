@@ -1,18 +1,17 @@
 import { useState } from "react";
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  const [status, setStatus] = useState("idle");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(false);
+    setStatus("submitting");
 
-    const form = e.target;
-    const formData = new FormData(form);
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("https://formspree.io/f/mgvzlqvn", {
+      const response = await fetch("https://formspree.io/f/mgvzlqvn", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -20,94 +19,83 @@ const Contact = () => {
         body: formData,
       });
 
-      if (res.ok) {
-        setSubmitted(true);
-        form.reset();
+      if (response.ok) {
+        setStatus("success");
+        e.target.reset();
       } else {
-        setError(true);
+        setStatus("error");
       }
-    } catch (err) {
-      setError(true);
+    } catch (error) {
+      setStatus("error");
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-center text-indigo-600 mb-10">
+    <div className="max-w-xl mx-auto px-4 py-20">
+      <h1 className="text-4xl font-bold text-center text-primary mb-6">
         Contact Us
       </h1>
+      <p className="text-lg text-center text-gray-600 mb-10">
+        Ready to explore how AI17 can help your business grow responsibly?
+        Get in touch — we’d love to learn about your goals.
+      </p>
 
-      {!submitted ? (
-        <>
-          <p className="text-center text-gray-700 mb-12">
-            Have a question about AI compliance, governance, or engineering? Want to book a
-            consultation? Reach out using the form below.
-          </p>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <input type="hidden" name="_subject" value="New contact from AI17 website" />
-
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">Name</label>
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Your full name"
-                className="w-full border rounded px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">Email</label>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                className="w-full border rounded px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">Message</label>
-              <textarea
-                name="message"
-                rows="5"
-                required
-                placeholder="Tell us what you're looking for..."
-                className="w-full border rounded px-4 py-2 focus:outline-none focus:ring focus:ring-indigo-300"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-indigo-600 text-white px-6 py-3 rounded font-semibold hover:bg-indigo-700 transition"
-            >
-              Send Message
-            </button>
-
-            {error && (
-              <p className="text-red-600 text-sm mt-2">
-                Something went wrong. Please try again later.
-              </p>
-            )}
-          </form>
-        </>
-      ) : (
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-green-600 mb-4">Thank you!</h2>
-          <p className="text-gray-700 mb-6">
-            Your message has been sent. We’ll get back to you shortly.
-          </p>
-          <a
-            href="/"
-            className="inline-block bg-indigo-600 text-white font-semibold px-6 py-3 rounded hover:bg-indigo-700 transition"
-          >
-            Return to Homepage
-          </a>
+      {status === "success" && (
+        <div className="bg-green-100 text-green-800 p-4 rounded mb-6 text-center font-medium">
+          Thank you! Your message has been sent.
         </div>
       )}
+      {status === "error" && (
+        <div className="bg-red-100 text-red-800 p-4 rounded mb-6 text-center font-medium">
+          Something went wrong. Please try again.
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="name" className="block text-gray-700 font-medium mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            required
+            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-gray-700 font-medium mb-1">
+            Message
+          </label>
+          <textarea
+            name="message"
+            rows="5"
+            required
+            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="bg-primary text-white font-semibold py-2 px-6 rounded hover:bg-primary/90 transition w-full"
+        >
+          {status === "submitting" ? "Sending..." : "Send Message"}
+        </button>
+      </form>
     </div>
   );
 };
