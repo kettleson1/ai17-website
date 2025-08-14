@@ -12,7 +12,6 @@ export default function Navbar() {
           alt="AI17 Logo"
           className="h-12 w-auto object-contain"
         />
-        <span className="text-2xl font-bold text-[#E55C20]">AI17</span>
       </Link>
 
       {/* Navigation Links */}
