@@ -1,55 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/ai17-logo.png"; // Make sure file name matches exactly
+import { Link, NavLink } from "react-router-dom";
+import logo from "../assets/ai17-logo.png"; // Ensure file path is correct
+
+const navLinkClass = ({ isActive }) =>
+  `px-4 py-2 text-lg font-medium transition ${
+    isActive ? "text-primary" : "text-gray-700 hover:text-primary"
+  }`;
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-white shadow-md">
-      {/* Logo & Brand */}
-      <Link to="/" className="flex items-center space-x-3">
-        <img
-          src={logo}
-          alt="AI17 Logo"
-          className="h-12 w-auto object-contain"
-        />
-      </Link>
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 h-20">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="AI17 logo" className="h-20 w-20" /> {/* Increased size */}
+          <span className="sr-only">AI17</span>
+        </Link>
 
-      {/* Navigation Links */}
-      <div className="flex space-x-6">
-        <Link to="/" className="text-gray-700 hover:text-[#E55C20] transition">
-          Home
-        </Link>
-        <Link
-          to="/solutions"
-          className="text-gray-700 hover:text-[#E55C20] transition"
-        >
-          Solutions
-        </Link>
-        <Link
-          to="/industries"
-          className="text-gray-700 hover:text-[#E55C20] transition"
-        >
-          Industries
-        </Link>
-        <Link
-          to="/about"
-          className="text-gray-700 hover:text-[#E55C20] transition"
-        >
-          About
-        </Link>
-        <Link
-          to="/contact"
-          className="text-gray-700 hover:text-[#E55C20] transition"
-        >
-          Contact
-        </Link>
-        <Link
-          to="/book"
-          className="text-[#E55C20] font-semibold border border-[#E55C20] px-4 py-1 rounded hover:bg-[#E55C20] hover:text-white transition"
-        >
-          Book
-        </Link>
-      </div>
-    </nav>
+        {/* Centered Nav Links */}
+        <div className="flex-1 flex justify-center">
+          <div className="flex items-center gap-6">
+            <NavLink to="/" className={navLinkClass} end>Home</NavLink>
+            <NavLink to="/solutions" className={navLinkClass}>Solutions</NavLink>
+            <NavLink to="/industries" className={navLinkClass}>Industries</NavLink>
+            <NavLink to="/about" className={navLinkClass}>About</NavLink>
+            <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+            <NavLink to="/videos" className={navLinkClass}>Videos</NavLink>
+            <NavLink to="/templates" className={navLinkClass}>Templates</NavLink>
+          </div>
+        </div>
+        
+      </nav>
+    </header>
   );
 }

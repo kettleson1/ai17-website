@@ -7,6 +7,9 @@ import Industries from "./pages/Industries";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Book from "./pages/Book"; // <-- NEW booking page import
+import Videos from "./pages/Videos"; // Import Videos page if needed
+import Templates from "./pages/Templates"; // Import Templates page if needed 
+
 
 export default function App() {
   return (
@@ -19,6 +22,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/book" element={<Book />} /> {/* <-- NEW route */}
+        <Route path="/videos" element={<Videos />} /> {/* Videos page route */}
+        <Route path="/templates" element={<Templates />} /> {/* Templates page route */}
       </Routes>
     </Router>
   );
