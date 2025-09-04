@@ -24,7 +24,7 @@ export default function Home() {
         >
           <h1 className="text-5xl font-bold mb-4">AI17</h1>
           <p className="text-lg max-w-2xl mx-auto mb-6">
-            AI from people with the hearts of a teacher.
+            Intrigrate AI into your business with people who have a teacher's heart.
           </p>
           <Link
             to="/book"
@@ -47,7 +47,7 @@ export default function Home() {
           >
             <h3 className="text-2xl font-semibold mb-3 text-gray-900">AI Engineering</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Custom AI model development and integration tailored to your business goals —
+              Custom AI development and integration tailored to your business goals —
               from automation and decisioning to better customer experiences.
             </p>
           </motion.div>
@@ -87,12 +87,11 @@ export default function Home() {
           <div className="w-full md:w-1/2">
             <h3 className="text-3xl font-bold mb-4 text-gray-900">AI Engineering</h3>
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Go from idea to production with pipelines, models, and APIs that perform.
-              We design reliable systems and the MLOps to keep them healthy.
+              Go from idea to production we seemlessly integrate AI into your business.
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li>Use‑case discovery & technical scoping</li>
-              <li>LLMs, RAG, NLP, forecasting, and scoring models</li>
+              <li>Voice Agents, Chatbots, LLMs, RAG, NLP, forecasting, and scoring models</li>
               <li>Data pipelines, evaluation, and observability</li>
               <li>Production deployment & ongoing optimization</li>
             </ul>
@@ -137,7 +136,7 @@ export default function Home() {
       <section className="bg-[#E55C20] text-white py-16 text-center px-6">
         <h2 className="text-3xl md:text-4xl font-bold mb-3">Ready to Get Started?</h2>
         <p className="text-lg mb-6">
-          Let’s build AI you can trust — and prove it to your regulators.
+          Let’s build AI you can trust.
         </p>
         <div className="flex justify-center gap-4">
           <Link
