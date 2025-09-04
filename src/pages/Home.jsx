@@ -167,34 +167,58 @@ export default function Home() {
 
         {/* Duplicate rows for seamless loop */}
         <motion.div
-          className="flex gap-6 w-[200%]"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        >
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={`t1-${i}`}
-              className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0"
-            >
-              <p className="text-gray-700 mb-4">
-                “AI17 helped us launch our first AI initiative with complete
-                documentation and regulatory clarity.”
-              </p>
-              <p className="font-semibold text-gray-900">— Exec, FinTech Company</p>
-            </div>
-          ))}
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={`t2-${i}`}
-              className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0"
-            >
-              <p className="text-gray-700 mb-4">
-                “From engineering to governance, their team delivered fast and safely.”
-              </p>
-              <p className="font-semibold text-gray-900">— Director, Regional Bank</p>
-            </div>
-          ))}
-        </motion.div>
+  className="flex gap-6 w-[200%]"
+  animate={{ x: ["0%", "-50%"] }}
+  transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+>
+  {/* Matt Owner Holtz */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “The chatbot on our site helps drive in business without guests needing to call the host stand. It’s like having a digital host available 24/7.”
+    </p>
+    <p className="font-semibold text-gray-900">— Matt Owner Holtz</p>
+  </div>
+
+  {/* Miguel */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “The bot on our website answers customer questions on its own. It saves our staff time and keeps visitors engaged right on the site.”
+    </p>
+    <p className="font-semibold text-gray-900">— Miguel</p>
+  </div>
+
+  {/* Sarah */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “Since adding the chatbot, our reservation requests have doubled. Guests love getting quick answers instead of waiting on hold.”
+    </p>
+    <p className="font-semibold text-gray-900">— Sarah, Restaurant Manager</p>
+  </div>
+
+  {/* Jasmine */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “The chatbot takes care of the routine questions, so my team can focus on planning memorable events. It’s become part of our daily operations.”
+    </p>
+    <p className="font-semibold text-gray-900">— Jasmine, Event Coordinator</p>
+  </div>
+
+  {/* David */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “I was skeptical at first, but the bot has reduced missed inquiries by over 50%. Customers get the info they need instantly.”
+    </p>
+    <p className="font-semibold text-gray-900">— David, Small Business Owner</p>
+  </div>
+
+  {/* Lena */}
+  <div className="w-[300px] bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-6 text-left shrink-0">
+    <p className="text-gray-700 mb-4">
+      “The chatbot doesn’t just answer questions—it guides visitors into bookings. It’s like having a smart sales assistant on the website.”
+    </p>
+    <p className="font-semibold text-gray-900">— Lena, Marketing Director</p>
+  </div>
+</motion.div>
       </section>
     </div>
   );
