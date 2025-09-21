@@ -8,8 +8,7 @@ const About = () => {
       <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto leading-relaxed mb-12">
         AI17 helps businesses harness the power of artificial intelligence while ensuring
         responsible governance, regulatory compliance, and long-term business value. 
-        We specialize in aligning AI solutions with risk frameworks — particularly for
-        banks, insurers, and regulated industries.
+        We specialize in AI strategy, model risk management, and AI governance frameworks.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
