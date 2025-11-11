@@ -48,6 +48,11 @@ export default function Home() {
               Custom AI development and integration tailored to your business goals —
               from automation and decisioning to better customer experiences.
             </p>
+            <img
+              src={aiEngineeringImg}
+              alt="AI Engineering"
+              className="rounded-lg shadow-lg w-full h-auto object-cover mt-6"
+            />
           </motion.div>
 
           <motion.div
