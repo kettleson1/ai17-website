@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 h-20">
-        
+
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="AI17 logo" className="h-20 w-20" /> {/* Increased size */}
@@ -27,9 +27,10 @@ export default function Navbar() {
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
             <NavLink to="/videos" className={navLinkClass}>Videos</NavLink>
             <NavLink to="/templates" className={navLinkClass}>Templates</NavLink>
+            <NavLink to="/telemarketer" className={navLinkClass}>Telemarketer HQ</NavLink>
           </div>
         </div>
-        
+
       </nav>
     </header>
   );
