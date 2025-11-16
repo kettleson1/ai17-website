@@ -27,7 +27,7 @@ export default function Navbar() {
             <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
             <NavLink to="/videos" className={navLinkClass}>Videos</NavLink>
             <NavLink to="/templates" className={navLinkClass}>Templates</NavLink>
-            <NavLink to="/telemarketer" className={navLinkClass}>Telemarketer HQ</NavLink>
+            <NavLink to="/outreach" className={navLinkClass}>Outreach HQ</NavLink>
           </div>
         </div>
 

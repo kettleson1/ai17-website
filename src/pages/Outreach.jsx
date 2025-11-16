@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
-const STORAGE_KEY = "ai17-telemarketer-v2";
+const STORAGE_KEY = "ai17-outreach-v1";
 
 const baseLeads = [
   {
@@ -108,7 +108,7 @@ const loadState = () => {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (error) {
-    console.error("Failed to load telemarketer data", error);
+    console.error("Failed to load outreach data", error);
     return null;
   }
 };
@@ -118,7 +118,7 @@ const persistState = (state) => {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (error) {
-    console.error("Failed to save telemarketer data", error);
+    console.error("Failed to save outreach data", error);
   }
 };
 
@@ -132,14 +132,14 @@ const StatCard = ({ label, value, subLabel }) => (
   </div>
 );
 
-export default function Telemarketer() {
+export default function Outreach() {
   const [state, setState] = useState(() => {
     const saved = loadState();
     const defaultLeadState = createLeadState();
 
     if (!saved) {
       return {
-        telemarketerName: "",
+        outreachName: "",
         leadState: defaultLeadState,
         callLog: [],
         appointments: [],
@@ -155,7 +155,7 @@ export default function Telemarketer() {
     }
 
     return {
-      telemarketerName: saved.telemarketerName ?? "",
+      outreachName: saved.outreachName ?? "",
       leadState: mergedLeadState,
       callLog: Array.isArray(saved.callLog) ? saved.callLog : [],
       appointments: Array.isArray(saved.appointments)
@@ -283,7 +283,7 @@ export default function Telemarketer() {
 
   const handleResetWorkspace = () => {
     setState({
-      telemarketerName: "",
+      outreachName: "",
       leadState: createLeadState(),
       callLog: [],
       appointments: [],
@@ -312,7 +312,7 @@ export default function Telemarketer() {
         <header className="flex flex-col gap-6 rounded-2xl bg-white p-6 shadow-sm lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm font-medium uppercase tracking-wide text-primary">
-              Telemarketer HQ
+              Outreach HQ
             </p>
             <h1 className="mt-2 text-3xl font-semibold text-gray-900">
               Daily Outreach Command Center
@@ -323,14 +323,14 @@ export default function Telemarketer() {
             </p>
           </div>
           <div className="flex w-full flex-col gap-4 lg:w-80">
-            <label className="text-sm font-medium text-gray-700" htmlFor="telemarketerName">
+            <label className="text-sm font-medium text-gray-700" htmlFor="outreachName">
               Your name
             </label>
             <input
-              id="telemarketerName"
-              value={state.telemarketerName}
+              id="outreachName"
+              value={state.outreachName}
               onChange={(event) =>
-                setState((prev) => ({ ...prev, telemarketerName: event.target.value }))
+                setState((prev) => ({ ...prev, outreachName: event.target.value }))
               }
               placeholder="e.g. Jordan Williams"
               className="rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
@@ -354,7 +354,7 @@ export default function Telemarketer() {
             <StatCard
               label="Last logged call"
               value={leadMetrics.lastCall ? formatDateTime(leadMetrics.lastCall) : "--"}
-              subLabel={state.telemarketerName ? `Saved for ${state.telemarketerName}` : undefined}
+              subLabel={state.outreachName ? `Saved for ${state.outreachName}` : undefined}
             />
           </div>
         </section>

@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import Book from "./pages/Book"; // <-- NEW booking page import
 import Videos from "./pages/Videos"; // Import Videos page if needed
 import Templates from "./pages/Templates"; // Import Templates page if needed
-import Telemarketer from "./pages/Telemarketer";
+import Outreach from "./pages/Outreach";
 
 export default function App() {
   return (
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/book" element={<Book />} /> {/* <-- NEW route */}
         <Route path="/videos" element={<Videos />} /> {/* Videos page route */}
         <Route path="/templates" element={<Templates />} /> {/* Templates page route */}
-        <Route path="/telemarketer" element={<Telemarketer />} />
+        <Route path="/outreach" element={<Outreach />} />
       </Routes>
     </Router>
   );

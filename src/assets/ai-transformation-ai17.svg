@@ -1,0 +1,104 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AI Transformation Illustration</title>
+  <desc id="desc">Abstract network with nodes and flowing energy that represents AI transformation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050816" />
+      <stop offset="50%" stop-color="#0f2243" />
+      <stop offset="100%" stop-color="#0d1b2a" />
+    </linearGradient>
+    <radialGradient id="pulse" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#3be8ff" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#3be8ff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#3be8ff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff8f3f" />
+      <stop offset="50%" stop-color="#f25fd0" />
+      <stop offset="100%" stop-color="#28d8ff" />
+    </linearGradient>
+    <linearGradient id="node" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fbff" />
+      <stop offset="100%" stop-color="#3be8ff" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)" rx="32" />
+
+  <g opacity="0.3" stroke="#1f355a" stroke-width="1">
+    <path d="M0 120h1200" />
+    <path d="M0 240h1200" />
+    <path d="M0 360h1200" />
+    <path d="M0 480h1200" />
+    <path d="M0 600h1200" />
+    <path d="M0 720h1200" />
+    <path d="M120 0v800" />
+    <path d="M240 0v800" />
+    <path d="M360 0v800" />
+    <path d="M480 0v800" />
+    <path d="M600 0v800" />
+    <path d="M720 0v800" />
+    <path d="M840 0v800" />
+    <path d="M960 0v800" />
+    <path d="M1080 0v800" />
+  </g>
+
+  <circle cx="850" cy="250" r="190" fill="url(#pulse)" />
+
+  <path
+    d="
+      M 180 540
+      C 280 420, 420 360, 540 360
+      C 690 360, 790 450, 890 420
+      C 1010 380, 1030 280, 950 220
+      C 860 155, 700 200, 620 260
+      C 520 335, 460 420, 340 460
+      C 270 485, 220 520, 180 540
+    "
+    fill="none"
+    stroke="url(#path)"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+
+  <g fill="url(#node)" filter="url(#glow)">
+    <circle cx="180" cy="540" r="14" />
+    <circle cx="340" cy="460" r="20" />
+    <circle cx="540" cy="360" r="24" />
+    <circle cx="620" cy="260" r="18" />
+    <circle cx="760" cy="350" r="14" />
+    <circle cx="890" cy="420" r="20" />
+    <circle cx="950" cy="220" r="26" />
+  </g>
+
+  <g fill="none" stroke="#34d2ff" stroke-opacity="0.6" stroke-width="3">
+    <path d="M340 460 Q 470 520 620 260" />
+    <path d="M620 260 Q 720 120 950 220" />
+    <path d="M540 360 Q 720 420 890 420" />
+    <path d="M340 460 Q 520 420 760 350" />
+  </g>
+
+  <path
+    d="M1040 260c24 0 44 20 44 44s-20 44-44 44-44-20-44-44 20-44 44-44zm0 20c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm-560 260c16 0 30 14 30 30s-14 30-30 30-30-14-30-30 14-30 30-30zm0 14c-8.7 0-16 7.3-16 16s7.3 16 16 16 16-7.3 16-16-7.3-16-16-16z"
+    fill="#fefefe"
+    opacity="0.5"
+  />
+
+  <g transform="translate(150 160)">
+    <text x="0" y="0" fill="#a9c6ff" font-size="32" font-family="Inter, 'Segoe UI', sans-serif" letter-spacing="0.1em">
+      AI TRANSFORMATION
+    </text>
+    <text x="0" y="42" fill="#fefefe" font-size="20" font-family="Inter, 'Segoe UI', sans-serif" opacity="0.75">
+      Strategy, engineering, and change enablement to scale intelligent systems.
+    </text>
+  </g>
+</svg>
