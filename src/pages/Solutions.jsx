@@ -15,7 +15,7 @@ const Solutions = () => {
       <section className="space-y-16">
         {/* Package 1 */}
         <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-2">💡 Starter: LLM Launch Kit – $4,950</h2>
+          <h2 className="text-2xl font-semibold mb-2">💡 Starter: LLM Launch Kit – $917</h2>
           <p className="text-gray-700 mb-2">Best for startups or teams launching their first GenAI product.</p>
           <ul className="list-disc list-inside text-gray-600 mb-4">
             <li>RAG app setup with OpenAI or Anthropic</li>
@@ -29,7 +29,7 @@ const Solutions = () => {
 
         {/* Package 2 */}
         <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-2">🏗️ Pro: GPT Agent Builder – $6,500+</h2>
+          <h2 className="text-2xl font-semibold mb-2">🏗️ Pro: GPT Agent Builder – $2,417+</h2>
           <p className="text-gray-700 mb-2">Best for businesses wanting fully custom AI agents with tools and memory.</p>
           <ul className="list-disc list-inside text-gray-600 mb-4">
             <li>Custom planner + tool-based agent logic</li>
@@ -43,7 +43,7 @@ const Solutions = () => {
 
         {/* Package 3 */}
         <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-2">🧱 Enterprise: AI Stack Deployment – $12,500+</h2>
+          <h2 className="text-2xl font-semibold mb-2">🧱 Enterprise: AI Stack Deployment – $12,417+</h2>
           <p className="text-gray-700 mb-2">Best for teams building production-grade AI infrastructure.</p>
           <ul className="list-disc list-inside text-gray-600 mb-4">
             <li>Secure LLM API gateway + containerized architecture</li>
@@ -67,6 +67,58 @@ const Solutions = () => {
           </ul>
           <p className="text-sm text-gray-500">Turnaround in 3–5 business days.</p>
         </div>
+
+        {/* Package 5 */}
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h2 className="text-2xl font-semibold mb-2">🚀 AI Transformation Consulting – $22,417</h2>
+          <p className="text-gray-700 mb-2">Full-stack advisory for executives driving organization-wide AI adoption.</p>
+          <ul className="list-disc list-inside text-gray-600 mb-4">
+            <li>Executive workshop to align GTM, ops, and data stakeholders</li>
+            <li>AI roadmap with prioritized initiatives, ROI forecast, and quick wins</li>
+            <li>Technical reference architecture covering data estate, models, and guardrails</li>
+            <li>Change-management kit: playbooks, training paths, and governance checklist</li>
+            <li>90-day action plan plus bi-weekly advisory calls for implementation support</li>
+          </ul>
+          <p className="text-sm text-gray-500">Ideal for scaleups modernizing whole business units with AI.</p>
+        </div>
+
+        {/* AI Transformation Section */}
+        <section className="bg-gray-900 text-white rounded-2xl p-8 shadow-xl">
+          <div className="flex flex-col gap-4">
+            <p className="uppercase text-sm tracking-[0.3em] text-[#F79C1F]">AI Transformation</p>
+            <h2 className="text-3xl font-semibold">Modernize every layer of your business.</h2>
+            <p className="text-gray-200">
+              Partner with our team to move from experimentation to operational impact. We guide leaders through
+              strategy, architecture, and enablement so AI becomes a durable capability instead of a one-off pilot.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3 mt-8">
+            <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
+              <h3 className="text-xl font-semibold mb-3">1. Diagnose & Align</h3>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li>Executive workshops to prioritize value pools</li>
+                <li>Data, governance, and risk assessments</li>
+                <li>North-star KPI + ROI modeling</li>
+              </ul>
+            </div>
+            <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
+              <h3 className="text-xl font-semibold mb-3">2. Build the Stack</h3>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li>Reference architectures and security guardrails</li>
+                <li>LLM + data foundation with observability baked in</li>
+                <li>Playbooks for delivery pods and vendor selection</li>
+              </ul>
+            </div>
+            <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
+              <h3 className="text-xl font-semibold mb-3">3. Enable & Scale</h3>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li>Change-management kits and training paths</li>
+                <li>Ops dashboards + guardrail monitoring</li>
+                <li>90-day execution scorecard with coaching</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
         {/* Call to action */}
         <div className="text-center">
