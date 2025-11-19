@@ -6,9 +6,9 @@ const About = () => {
       </h1>
 
       <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto leading-relaxed mb-12">
-        AI17 helps businesses harness the power of artificial intelligence while ensuring
-        responsible governance, regulatory compliance, and long-term business value. 
-        We specialize in AI strategy, model risk management, and AI governance frameworks.
+        AI17 is an AI transformation and engineering studio. We design the roadmap, build the
+        software, and guide teams through launch so your organization can scale AI into daily
+        operations faster than piecemeal vendors or lone internal experiments.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
@@ -17,7 +17,9 @@ const About = () => {
             Our Mission
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            To help organizations drive growth with AI while maintaining model accountability, fairness, and transparency — ensuring technology serves both profit and the public interest.
+            To unlock durable business value from AI initiatives by pairing bold transformation
+            goals with pragmatic engineering. We exist to turn executive vision into working
+            products, processes, and teams.
           </p>
         </div>
         <div>
@@ -25,9 +27,9 @@ const About = () => {
             Our Difference
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            We combine deep technical AI expertise with risk and regulatory insight. 
-            That means your AI projects get off the ground — and stay in bounds with 
-            your governance, audit, and compliance teams.
+            Senior AI engineers, product leaders, and operators build side-by-side inside AI17
+            squads. We partner from experimentation through deployment, embedding with your
+            staff to transfer code, skills, and reliable delivery playbooks.
           </p>
         </div>
       </div>

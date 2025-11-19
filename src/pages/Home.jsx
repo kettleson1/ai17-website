@@ -21,9 +21,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-bold mb-4">AI17</h1>
+          <h1 className="text-5xl font-bold mb-4">AI Transformation & Engineering</h1>
           <p className="text-lg max-w-2xl mx-auto mb-6">
-            Intrigrate AI into your business with people who have a teacher's heart.
+            Launch production-grade AI programs with a team that blends strategy, delivery, and
+            hands-on engineering to ship outcomes — not just slide decks.
           </p>
           <Link
             to="/book"
@@ -46,8 +47,8 @@ export default function Home() {
           >
             <h3 className="text-2xl font-semibold mb-3 text-gray-900">AI Engineering</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Custom AI development and integration tailored to your business goals —
-              from automation and decisioning to better customer experiences.
+              Full-stack AI product teams that design, build, and maintain intelligent
+              applications — from copilots and automation to forecasting and decisioning.
             </p>
             <div className="rounded-lg shadow-lg bg-white p-4 h-72 flex items-center justify-center mt-6">
               <img
@@ -66,8 +67,8 @@ export default function Home() {
           >
             <h3 className="text-2xl font-semibold mb-3 text-gray-900">AI Transformation</h3>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Accelerate your organization's shift to AI-first operations — responsibly and at scale.
-              We help you identify the right opportunities, align stakeholders, and build sustainably.
+              A repeatable playbook for AI transformation — opportunity mapping, change orchestration,
+              and enablement that connects executive vision to day-to-day execution.
             </p>
             <div className="rounded-lg shadow-lg bg-white p-4 h-72 flex items-center justify-center mt-6">
               <img
@@ -103,13 +104,14 @@ export default function Home() {
           <div className="w-full md:w-1/2">
             <h3 className="text-3xl font-bold mb-4 text-gray-900">AI Engineering</h3>
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Go from idea to production — we seamlessly integrate AI into your business.
+              Go from use-case ideas to production software with engineers who understand data,
+              infrastructure, and the product experience.
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Use‑case discovery & technical scoping</li>
-              <li>Voice agents, chatbots, LLMs, RAG, NLP, forecasting, and scoring models</li>
-              <li>Data pipelines, evaluation, and observability</li>
-              <li>Production deployment & ongoing optimization</li>
+              <li>Use‑case discovery, product design, and technical scoping</li>
+              <li>Voice agents, copilots, LLMs, RAG, NLP, forecasting, and scoring models</li>
+              <li>Data pipelines, eval harnesses, and observability</li>
+              <li>Production deployment, experimentation, and optimization</li>
             </ul>
           </div>
         </div>
@@ -121,13 +123,12 @@ export default function Home() {
           <div className="w-full md:w-1/2">
             <h3 className="text-3xl font-bold mb-4 text-gray-900">AI Transformation</h3>
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Move beyond pilots to transform how work gets done. We partner with your teams to
-              prioritize AI use cases, build the right operating model, and create adoption plans
-              that deliver measurable business value.
+              Move beyond pilots with a structured transformation program. We partner with your
+              teams to prioritize work, unblock adoption, and instrument measurable wins.
             </p>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Use‑case discovery, value estimation, and prioritization</li>
-              <li>Operating model, roles, and governance for responsible AI</li>
+              <li>Transformation roadmaps, value sizing, and workstream prioritization</li>
+              <li>Embedded delivery leadership, AI PMO, and cross-functional rituals</li>
               <li>Data readiness, pipelines, and MLOps for reliable production models</li>
               <li>Model lifecycle, monitoring, and performance management</li>
               <li>Change management, training, and stakeholder adoption</li>
@@ -188,7 +189,8 @@ export default function Home() {
       <section className="bg-[#E55C20] text-white py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Bring Your AI Vision to Life</h2>
         <p className="text-lg max-w-2xl mx-auto mb-6">
-          Whether you're just starting or ready to scale, we're here to help you navigate the AI journey with confidence and clarity.
+          Whether you're validating a first use case or scaling an AI program across business units,
+          we bring the product, engineering, and operating support to make it real.
         </p>
         <Link
           to="/contact"
