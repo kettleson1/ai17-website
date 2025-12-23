@@ -11,9 +11,10 @@ const items = [
 ];
 
 export default function Templates() {
+  const MotionDiv = motion.div;
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-      <motion.div
+      <MotionDiv
         className="max-w-5xl mx-auto text-center mb-10"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -23,9 +24,9 @@ export default function Templates() {
         <p className="text-gray-600 text-lg mt-2">
           Download ready-to-use templates to document, validate, and monitor your AI models.
         </p>
-      </motion.div>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -44,7 +45,7 @@ export default function Templates() {
             </a>
           </div>
         ))}
-      </motion.div>
+      </MotionDiv>
 
       <div className="max-w-5xl mx-auto text-center mt-10 text-gray-500">
         Don’t see a format you need? <a href="/contact" className="text-[#E55C20] hover:underline">Contact us</a> for a custom version.

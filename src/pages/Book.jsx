@@ -3,11 +3,12 @@ import { motion } from "framer-motion";
 import { InlineWidget } from "react-calendly";
 
 export default function Book() {
+  const MotionDiv = motion.div;
   const calendlyUrl = "https://calendly.com/jjkettleson/discovery-meeting"; // ← put your link here
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-      <motion.div
+      <MotionDiv
         className="max-w-4xl mx-auto text-center"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -18,9 +19,9 @@ export default function Book() {
           Pick a time that works for you. We’ll come prepared—
           <span className="font-medium"> AI from people with the hearts of a teacher.</span>
         </p>
-      </motion.div>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -51,7 +52,7 @@ export default function Book() {
             Trouble loading? Open Calendly in a new tab →
           </a>
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 }

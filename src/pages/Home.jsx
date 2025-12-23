@@ -6,6 +6,7 @@ import aiEngineeringImg from "../assets/ai-engineering-ai17.png";
 import aiTransformationImg from "../assets/ai-transformation-ai17.svg";
 
 export default function Home() {
+  const MotionDiv = motion.div;
   return (
     <div className="flex flex-col">
 
@@ -15,7 +16,7 @@ export default function Home() {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50" />
-        <motion.div
+        <MotionDiv
           className="relative z-10 text-center text-white px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,14 +33,14 @@ export default function Home() {
           >
             Book a Meeting
           </Link>
-        </motion.div>
+        </MotionDiv>
       </section>
 
       {/* Value Props */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 text-center">
 
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -57,9 +58,9 @@ export default function Home() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-          </motion.div>
+          </MotionDiv>
 
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -77,7 +78,7 @@ export default function Home() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-          </motion.div>
+          </MotionDiv>
 
         </div>
       </section>
@@ -85,7 +86,7 @@ export default function Home() {
       {/* Deep Dive: AI Engineering */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <motion.div
+          <MotionDiv
             className="w-full md:w-1/2"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,7 +100,7 @@ export default function Home() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-          </motion.div>
+          </MotionDiv>
 
           <div className="w-full md:w-1/2">
             <h3 className="text-3xl font-bold mb-4 text-gray-900">AI Engineering</h3>
@@ -135,7 +136,7 @@ export default function Home() {
             </ul>
           </div>
 
-          <motion.div
+          <MotionDiv
             className="w-full md:w-1/2"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -149,7 +150,7 @@ export default function Home() {
                 className="max-h-full w-auto object-contain"
               />
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </section>
 
@@ -164,7 +165,7 @@ export default function Home() {
           </p>
         </div>
 
-        <motion.div
+        <MotionDiv
           className="flex gap-6 w-[200%]"
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
@@ -182,7 +183,7 @@ export default function Home() {
               <p className="font-semibold text-gray-900">— {t.name}</p>
             </div>
           ))}
-        </motion.div>
+        </MotionDiv>
       </section>
 
       {/* Call to Action */}

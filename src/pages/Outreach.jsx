@@ -185,7 +185,7 @@ export default function Outreach() {
       totals,
       lastCall: state.callLog[0]?.timestamp ?? null,
     };
-  }, [state.leadState, state.appointments, state.callLog]);
+  }, [state.leadState, state.callLog]);
 
   const handleStatusChange = (leadId, status) => {
     setState((prev) => ({

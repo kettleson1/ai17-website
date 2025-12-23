@@ -8,7 +8,6 @@ const Contact = () => {
     setStatus("submitting");
 
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
 
     try {
       const response = await fetch("https://formspree.io/f/mgvzlqvn", {
@@ -25,7 +24,7 @@ const Contact = () => {
       } else {
         setStatus("error");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
     }
   };

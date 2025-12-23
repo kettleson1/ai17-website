@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "AI17 Outreach HQ",
+    "slug": "ai17-outreach-hq",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "ai17-outreach",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
