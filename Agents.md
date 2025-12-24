@@ -34,4 +34,9 @@
 - Memory & context: vector stores + SQL feature stores with retrieval policies
 - Monitoring: evaluation pipelines, tracing, and incident webhooks integrated into existing observability stacks
 
+## Mobile Application
+- The AI17 mobile app is built with Expo and mirrors core web workflows (performance snapshot, lead queue, call logging, and script access).
+- Configure AWS Cognito (User Pool + Hosted UI) and Firebase before testing.
+- For Expo Go testing, use the Hosted UI domain and set redirect URLs to the Expo AuthSession proxy URL.
+
 For more information or to start an agent initiative, reach out to the AI17 team via `/contact`.
