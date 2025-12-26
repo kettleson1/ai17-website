@@ -1,7 +1,10 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { PutCommand } from '@aws-sdk/lib-dynamodb';
 import config from '../constants/config';
-import { getDb } from './firebase';
 import { getAuthenticatedUserId } from './authService';
+import { getDynamoDocClient } from './dynamoClient';
+
+const createCallLogId = () =>
+  `call_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
 
 export const logCall = async ({ leadId, outcome, notes, followUp }) => {
   if (config.useSampleData) {
@@ -11,15 +14,21 @@ export const logCall = async ({ leadId, outcome, notes, followUp }) => {
   const userId = await getAuthenticatedUserId();
   if (!userId) return false;
 
-  const db = getDb();
-  await addDoc(collection(db, 'callLogs'), {
-    leadId,
-    outcome,
-    notes: notes || null,
-    followUp: followUp || null,
-    createdBy: userId,
-    timestamp: serverTimestamp()
-  });
+  const docClient = getDynamoDocClient();
+  await docClient.send(
+    new PutCommand({
+      TableName: config.dynamoTables.callLogs,
+      Item: {
+        callLogId: createCallLogId(),
+        leadId,
+        outcome,
+        notes: notes || null,
+        followUp: followUp || null,
+        createdBy: userId,
+        timestamp: new Date().toISOString()
+      }
+    })
+  );
 
   return true;
 };

@@ -1,7 +1,7 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { QueryCommand } from '@aws-sdk/lib-dynamodb';
 import config from '../constants/config';
-import { getDb } from './firebase';
 import { getAuthenticatedUserId } from './authService';
+import { getDynamoDocClient } from './dynamoClient';
 
 const samplePayouts = {
   instant: 10,
@@ -30,15 +30,22 @@ export const getPayoutSnapshot = async () => {
     return { instant: 0, weekly: 0, lastPaidAt: '--' };
   }
 
-  const db = getDb();
-  const payoutsQuery = query(collection(db, 'payouts'), where('userId', '==', userId));
-  const snap = await getDocs(payoutsQuery);
+  const docClient = getDynamoDocClient();
+  const result = await docClient.send(
+    new QueryCommand({
+      TableName: config.dynamoTables.payouts,
+      IndexName: 'userId-paidAt-index',
+      KeyConditionExpression: 'userId = :userId',
+      ExpressionAttributeValues: {
+        ':userId': userId
+      }
+    })
+  );
   let instant = 0;
   let weekly = 0;
   let lastPaidAt = null;
 
-  snap.forEach((docSnap) => {
-    const data = docSnap.data();
+  (result.Items || []).forEach((data) => {
     if (data.type === 'instant') {
       instant += data.amount || 0;
     } else if (data.type === 'weekly') {

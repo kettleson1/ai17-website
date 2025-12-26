@@ -1,8 +1,8 @@
-import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
+import { QueryCommand } from '@aws-sdk/lib-dynamodb';
 import config from '../constants/config';
 import { sampleLeads } from '../data/sampleLeads';
-import { getDb } from './firebase';
 import { getAuthenticatedUserId } from './authService';
+import { getDynamoDocClient } from './dynamoClient';
 
 const emptySnapshot = {
   notContacted: 0,
@@ -40,25 +40,37 @@ export const getPerformanceSnapshot = async () => {
   const userId = await getAuthenticatedUserId();
   if (!userId) return emptySnapshot;
 
-  const db = getDb();
-  const leadsQuery = query(collection(db, 'leads'), where('assignedTo', '==', userId));
-  const leadsSnap = await getDocs(leadsQuery);
+  const docClient = getDynamoDocClient();
+  const leadsResult = await docClient.send(
+    new QueryCommand({
+      TableName: config.dynamoTables.leads,
+      IndexName: 'assignedTo-index',
+      KeyConditionExpression: 'assignedTo = :assignedTo',
+      ExpressionAttributeValues: {
+        ':assignedTo': userId
+      }
+    })
+  );
 
   const totals = { 'not-contacted': 0, 'in-progress': 0, 'appointment-set': 0 };
-  leadsSnap.forEach((doc) => {
-    const data = doc.data();
+  (leadsResult.Items || []).forEach((data) => {
     const status = data.status || 'not-contacted';
     totals[status] = (totals[status] || 0) + 1;
   });
 
-  const callsQuery = query(
-    collection(db, 'callLogs'),
-    where('createdBy', '==', userId),
-    orderBy('timestamp', 'desc'),
-    limit(1)
+  const callsResult = await docClient.send(
+    new QueryCommand({
+      TableName: config.dynamoTables.callLogs,
+      IndexName: 'createdBy-timestamp-index',
+      KeyConditionExpression: 'createdBy = :createdBy',
+      ExpressionAttributeValues: {
+        ':createdBy': userId
+      },
+      ScanIndexForward: false,
+      Limit: 1
+    })
   );
-  const callSnap = await getDocs(callsQuery);
-  const lastCall = callSnap.docs[0]?.data()?.timestamp || null;
+  const lastCall = callsResult.Items?.[0]?.timestamp || null;
 
   return {
     notContacted: totals['not-contacted'],

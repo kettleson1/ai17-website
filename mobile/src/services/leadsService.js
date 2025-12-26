@@ -1,8 +1,8 @@
-import { collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { GetCommand, QueryCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import config from '../constants/config';
 import { sampleLeads } from '../data/sampleLeads';
-import { getDb } from './firebase';
 import { getAuthenticatedUserId } from './authService';
+import { getDynamoDocClient } from './dynamoClient';
 
 export const getLeads = async () => {
   if (config.useSampleData) {
@@ -12,10 +12,22 @@ export const getLeads = async () => {
   const userId = await getAuthenticatedUserId();
   if (!userId) return [];
 
-  const db = getDb();
-  const leadsQuery = query(collection(db, 'leads'), where('assignedTo', '==', userId));
-  const snap = await getDocs(leadsQuery);
-  return snap.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }));
+  const docClient = getDynamoDocClient();
+  const result = await docClient.send(
+    new QueryCommand({
+      TableName: config.dynamoTables.leads,
+      IndexName: 'assignedTo-index',
+      KeyConditionExpression: 'assignedTo = :assignedTo',
+      ExpressionAttributeValues: {
+        ':assignedTo': userId
+      }
+    })
+  );
+
+  return (result.Items || []).map((item) => ({
+    id: item.leadId,
+    ...item
+  }));
 };
 
 export const getLeadById = async (leadId) => {
@@ -23,11 +35,16 @@ export const getLeadById = async (leadId) => {
     return sampleLeads.find((lead) => lead.id === leadId) || null;
   }
 
-  const db = getDb();
-  const leadRef = doc(db, 'leads', leadId);
-  const snap = await getDoc(leadRef);
-  if (!snap.exists()) return null;
-  return { id: snap.id, ...snap.data() };
+  const docClient = getDynamoDocClient();
+  const result = await docClient.send(
+    new GetCommand({
+      TableName: config.dynamoTables.leads,
+      Key: { leadId }
+    })
+  );
+
+  if (!result.Item) return null;
+  return { id: result.Item.leadId, ...result.Item };
 };
 
 export const updateLeadStatus = async (leadId, status) => {
@@ -35,8 +52,19 @@ export const updateLeadStatus = async (leadId, status) => {
     return true;
   }
 
-  const db = getDb();
-  const leadRef = doc(db, 'leads', leadId);
-  await updateDoc(leadRef, { status });
+  const docClient = getDynamoDocClient();
+  await docClient.send(
+    new UpdateCommand({
+      TableName: config.dynamoTables.leads,
+      Key: { leadId },
+      UpdateExpression: 'SET #status = :status',
+      ExpressionAttributeNames: {
+        '#status': 'status'
+      },
+      ExpressionAttributeValues: {
+        ':status': status
+      }
+    })
+  );
   return true;
 };
