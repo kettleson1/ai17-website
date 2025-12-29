@@ -6,9 +6,12 @@
     "orientation": "portrait",
     "scheme": "ai17-outreach",
     "userInterfaceStyle": "light",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kettleson1.ai17-outreach-hq"
     }
   }
 }
