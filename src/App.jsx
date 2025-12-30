@@ -7,7 +7,8 @@ import Industries from "./pages/Industries";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Book from "./pages/Book"; // <-- NEW booking page import
-import Videos from "./pages/Videos"; // Import Videos page if neededimport Outreach from "./pages/Outreach";
+import Videos from "./pages/Videos"; // Import Videos page if needed
+import Outreach from "./pages/Outreach";
 
 export default function App() {
   return (
