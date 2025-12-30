@@ -7,7 +7,7 @@ const About = () => {
 
       <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto leading-relaxed mb-12">
         AI17 is an AI transformation and engineering studio. We design the roadmap, build the
-        software, and guide teams through launch so your organization can scale AI into daily
+        solutions, and guide teams through launch so your organization can scale AI into daily
         operations faster than piecemeal vendors or lone internal experiments.
       </p>
 
@@ -27,9 +27,7 @@ const About = () => {
             Our Difference
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed">
-            Senior AI engineers, product leaders, and operators build side-by-side inside AI17
-            squads. We partner from experimentation through deployment, embedding with your
-            staff to transfer code, skills, and reliable delivery playbooks.
+            Launching your first AI solution can feel overwhelming. That’s why AI17 partners closely with your team from day one—working side-by-side to experiment, deploy, and build real confidence. We transfer knowledge, code, and delivery playbooks so your organization isn’t dependent on us—you’re empowered.
           </p>
         </div>
       </div>
