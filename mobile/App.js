@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,11 +12,9 @@ import { configureAmplify } from './src/services/awsAuth';
 
 const Stack = createNativeStackNavigator();
 
-export default function App() {
-  useEffect(() => {
-    configureAmplify();
-  }, []);
+configureAmplify();
 
+export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>

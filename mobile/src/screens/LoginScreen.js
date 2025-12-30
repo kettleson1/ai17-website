@@ -15,7 +15,11 @@ export default function LoginScreen({ navigation }) {
       await loginWithEmail(email.trim(), password);
       navigation.replace('Dashboard');
     } catch (error) {
-      Alert.alert('Login failed', error?.message || 'Please check your credentials.');
+      console.log('LOGIN_ERROR', error);
+      Alert.alert(
+        'Login failed',
+        error?.message || error?.name || JSON.stringify(error)
+      );
     } finally {
       setSubmitting(false);
     }
