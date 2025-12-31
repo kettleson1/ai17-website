@@ -1,12 +1,41 @@
-# React + Vite
+# AI17 Website + Mobile
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AI17's marketing website and Outreach HQ mobile app live in this repo. The website highlights AI17's agent-first approach, while the mobile app mirrors core workflows like performance snapshots, lead queue, call logging, and script access.
 
-Currently, two official plugins are available:
+## Repository layout
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `src/` — React + Vite website
+- `mobile/` — Expo mobile application
 
-## Expanding the ESLint configuration
+## Website (Vite + React)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1) Install dependencies
+- `npm install`
+
+2) Run the dev server
+- `npm run dev`
+
+3) Production build and preview
+- `npm run build`
+- `npm run preview`
+
+4) Lint
+- `npm run lint`
+
+## Mobile app (Expo)
+
+1) Install dependencies
+- `cd mobile`
+- `npm install`
+
+2) Configure AWS Cognito + Firebase
+- Update `mobile/src/services/awsConfig.js` with your Cognito User Pool values.
+- Set the Hosted UI domain and redirect URLs.
+- Configure Firebase before testing.
+
+3) Run the app
+- `npm run start`
+
+## Expo Go testing
+
+For Expo Go, use the Hosted UI domain and set redirect URLs to the Expo AuthSession proxy URL.

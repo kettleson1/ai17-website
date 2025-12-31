@@ -34,8 +34,12 @@
 - Memory & context: vector stores + SQL feature stores with retrieval policies
 - Monitoring: evaluation pipelines, tracing, and incident webhooks integrated into existing observability stacks
 
+## Experience Surfaces
+- Website: AI17 marketing site focused on agents, outcomes, and engagement flow.
+- Mobile: Outreach HQ app mirrors the web workflows for performance snapshots, lead queue, call logging, and script access.
+
 ## Mobile Application
-- The AI17 mobile app is built with Expo and mirrors core web workflows (performance snapshot, lead queue, call logging, and script access).
+- The AI17 mobile app is built with Expo and lives in `mobile/`.
 - Configure AWS Cognito (User Pool + Hosted UI) and Firebase before testing.
 - For Expo Go testing, use the Hosted UI domain and set redirect URLs to the Expo AuthSession proxy URL.
 

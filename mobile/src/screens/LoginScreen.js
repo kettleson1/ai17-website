@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable, Alert } from 'react-native';
 import colors from '../theme/colors';
 import typography from '../theme/typography';
-import { loginWithEmail, loginWithSSO } from '../services/authService';
+import { loginWithEmail, loginWithSSO, getAuthenticatedUserId, logout } from '../services/authService';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    const checkExistingSession = async () => {
+      const userId = await getAuthenticatedUserId();
+      if (userId && isMounted) {
+        navigation.replace('Dashboard');
+      }
+    };
+    checkExistingSession();
+    return () => {
+      isMounted = false;
+    };
+  }, [navigation]);
 
   const handleEmailLogin = async () => {
     try {
@@ -15,6 +29,12 @@ export default function LoginScreen({ navigation }) {
       await loginWithEmail(email.trim(), password);
       navigation.replace('Dashboard');
     } catch (error) {
+      if (error?.name === 'UserAlreadyAuthenticatedException') {
+        await logout();
+        await loginWithEmail(email.trim(), password);
+        navigation.replace('Dashboard');
+        return;
+      }
       Alert.alert(
         'Login failed',
         error?.message || error?.name || JSON.stringify(error)
