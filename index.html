@@ -11,6 +11,19 @@
   gtag('config', 'AW-17542462378');
   gtag('config', 'G-ZGBRYVQGM5');
 </script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+    window.gtag && window.gtag('event', 'calendly_booking', {
+      event_category: 'conversion',
+      event_label: 'Calendly Booking'
+    });
+
+    console.log('Booking tracked!');
+  }
+});
+</script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/ai17-favicon.png" sizes="256x256" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

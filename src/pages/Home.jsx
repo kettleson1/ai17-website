@@ -7,6 +7,13 @@ import aiTransformationImg from "../assets/ai-transformation-ai17.svg";
 
 export default function Home() {
   const MotionDiv = motion.div;
+
+  const trackEvent = (eventName, params) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+    }
+  };
+
   return (
     <div className="flex flex-col">
 
@@ -29,6 +36,12 @@ export default function Home() {
           </p>
           <Link
             to="/book"
+            onClick={() =>
+              trackEvent("book_meeting_click", {
+                event_category: "engagement",
+                event_label: "Homepage CTA",
+              })
+            }
             className="bg-[#E55C20] text-white px-6 py-3 rounded-lg shadow hover:bg-[#d14f1b] transition"
           >
             Book a Meeting

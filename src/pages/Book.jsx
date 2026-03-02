@@ -6,6 +6,11 @@ export default function Book() {
   const MotionDiv = motion.div;
   const calendlyUrl = "https://calendly.com/jjkettleson/discovery-meeting"; // ← put your link here
 
+  const trackEvent = (eventName, params) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", eventName, params);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
       <MotionDiv
@@ -47,6 +52,12 @@ export default function Book() {
             href={calendlyUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={() =>
+              trackEvent("book_meeting_click", {
+                event_category: "engagement",
+                event_label: "Book Page Fallback Link",
+              })
+            }
             className="inline-block text-[#E55C20] hover:underline"
           >
             Trouble loading? Open Calendly in a new tab →
