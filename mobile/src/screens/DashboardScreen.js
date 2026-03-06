@@ -63,6 +63,9 @@ export default function DashboardScreen({ navigation }) {
         <Pressable style={styles.primaryButton} onPress={() => navigation.navigate('Leads')}>
           <Text style={styles.primaryButtonText}>Open lead queue</Text>
         </Pressable>
+        <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('Appointments')}>
+          <Text style={styles.secondaryButtonText}>Booked appointments</Text>
+        </Pressable>
         <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('Scripts')}>
           <Text style={styles.secondaryButtonText}>Call scripts</Text>
         </Pressable>

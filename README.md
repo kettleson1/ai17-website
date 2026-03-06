@@ -36,6 +36,11 @@ AI17's marketing website and Outreach HQ mobile app live in this repo. The websi
 3) Run the app
 - `npm run start`
 
+## Mobile MVP1 status
+
+The Outreach HQ mobile implementation status, March 6, 2026 updates, and MVP1 next-step checklist are documented in:
+- `mobile/README.md`
+
 ## Expo Go testing
 
 For Expo Go, use the Hosted UI domain and set redirect URLs to the Expo AuthSession proxy URL.

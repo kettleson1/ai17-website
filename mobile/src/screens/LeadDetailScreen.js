@@ -7,12 +7,14 @@ import {
   ActivityIndicator,
   Pressable,
   TextInput,
-  Alert
+  Alert,
+  Linking
 } from 'react-native';
 import colors from '../theme/colors';
 import typography from '../theme/typography';
 import { getLeadById, updateLeadStatus } from '../services/leadsService';
 import { logCall } from '../services/callLogService';
+import { createAppointment } from '../services/appointmentService';
 
 const statuses = [
   { value: 'not-contacted', label: 'Not contacted' },
@@ -33,6 +35,7 @@ export default function LeadDetailScreen({ route }) {
   const [status, setStatus] = useState('not-contacted');
   const [outcome, setOutcome] = useState('connected');
   const [notes, setNotes] = useState('');
+  const [appointmentTime, setAppointmentTime] = useState('');
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -57,16 +60,85 @@ export default function LeadDetailScreen({ route }) {
   };
 
   const handleLogCall = async () => {
+    const trimmedNotes = notes.trim();
+    const parsedAppointment = parseDateInput(appointmentTime);
+    const isAppointmentOutcome = outcome === 'appointment-set';
+
+    if (isAppointmentOutcome && !parsedAppointment) {
+      Alert.alert(
+        'Appointment time required',
+        'Enter a valid appointment date/time before saving.'
+      );
+      return;
+    }
+
+    const targetStatus = isAppointmentOutcome ? 'appointment-set' : 'in-progress';
+    const nowIso = new Date().toISOString();
+
     try {
       setSaving(true);
-      await logCall({ leadId, outcome, notes });
-      Alert.alert('Saved', 'Call logged.');
+      const writes = [
+        updateLeadStatus(leadId, targetStatus),
+        logCall({
+          leadId,
+          outcome,
+          notes: trimmedNotes,
+          followUp: parsedAppointment || null
+        })
+      ];
+
+      if (isAppointmentOutcome) {
+        writes.push(
+          createAppointment({
+            leadId,
+            scheduledAt: parsedAppointment,
+            notes: trimmedNotes,
+            leadBusinessName: lead?.businessName,
+            leadOwnerName: lead?.ownerName
+          })
+        );
+      }
+
+      await Promise.all(writes);
+
+      setLead((prev) => ({
+        ...prev,
+        status: targetStatus,
+        lastOutcome: outcome,
+        lastContact: nowIso
+      }));
+      setStatus(targetStatus);
       setNotes('');
+      setAppointmentTime('');
+      Alert.alert(
+        'Saved',
+        isAppointmentOutcome
+          ? 'Call logged and appointment saved.'
+          : 'Call logged and lead status synced.'
+      );
     } catch (error) {
       Alert.alert('Error', 'Unable to log call.');
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleDialLead = async () => {
+    const rawPhone = lead?.phone || '';
+    const cleanPhone = rawPhone.replace(/[^\d+]/g, '');
+    if (!cleanPhone) {
+      Alert.alert('Missing number', 'No phone number is available for this lead.');
+      return;
+    }
+
+    const telUrl = `tel:${cleanPhone}`;
+    const canOpen = await Linking.canOpenURL(telUrl);
+    if (!canOpen) {
+      Alert.alert('Unable to call', 'This device cannot start phone calls.');
+      return;
+    }
+
+    await Linking.openURL(telUrl);
   };
 
   if (!lead) {
@@ -83,6 +155,9 @@ export default function LeadDetailScreen({ route }) {
       <Text style={styles.meta}>Owner: {lead.ownerName}</Text>
       <Text style={styles.meta}>{lead.phone}</Text>
       <Text style={styles.meta}>{lead.location} | {lead.timezone}</Text>
+      <Pressable style={styles.callButton} onPress={handleDialLead}>
+        <Text style={styles.callButtonText}>Call lead</Text>
+      </Pressable>
 
       <Text style={styles.sectionTitle}>Status</Text>
       <View style={styles.pillRow}>
@@ -122,6 +197,12 @@ export default function LeadDetailScreen({ route }) {
         value={notes}
         onChangeText={setNotes}
         multiline
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Appointment time (e.g. 2026-03-06 14:30)"
+        value={appointmentTime}
+        onChangeText={setAppointmentTime}
       />
       <Pressable style={styles.secondaryButton} onPress={handleLogCall} disabled={saving}>
         <Text style={styles.secondaryButtonText}>Save call log</Text>
@@ -191,6 +272,17 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '600'
   },
+  callButton: {
+    marginTop: 12,
+    backgroundColor: colors.primary,
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: 'center'
+  },
+  callButtonText: {
+    color: '#FFFFFF',
+    fontWeight: '600'
+  },
   textarea: {
     marginTop: 12,
     borderWidth: 1,
@@ -200,6 +292,14 @@ const styles = StyleSheet.create({
     padding: 12,
     minHeight: 100,
     textAlignVertical: 'top'
+  },
+  input: {
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    borderRadius: 12,
+    padding: 12
   },
   secondaryButton: {
     marginTop: 12,
@@ -220,3 +320,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background
   }
 });
+
+const parseDateInput = (value) => {
+  const input = value?.trim();
+  if (!input) return null;
+
+  const parsed = new Date(input);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed.toISOString();
+};

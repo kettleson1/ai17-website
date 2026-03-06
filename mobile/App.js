@@ -8,6 +8,7 @@ import DashboardScreen from './src/screens/DashboardScreen';
 import LeadsScreen from './src/screens/LeadsScreen';
 import LeadDetailScreen from './src/screens/LeadDetailScreen';
 import ScriptsScreen from './src/screens/ScriptsScreen';
+import AppointmentsScreen from './src/screens/AppointmentsScreen';
 import { configureAmplify } from './src/services/awsAuth';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,11 @@ export default function App() {
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
           <Stack.Screen name="Leads" component={LeadsScreen} />
           <Stack.Screen name="LeadDetail" component={LeadDetailScreen} options={{ title: 'Lead' }} />
+          <Stack.Screen
+            name="Appointments"
+            component={AppointmentsScreen}
+            options={{ title: 'Appointments' }}
+          />
           <Stack.Screen name="Scripts" component={ScriptsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
